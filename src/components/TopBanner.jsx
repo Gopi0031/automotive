@@ -44,9 +44,9 @@ export default function TopBanner() {
   return (
     <>
       {/* Top Banner - Fully Responsive */}
-    <div className="hidden sm:block bg-gradient-to-r from-gray-900 via-gray-800 to-black text-white backdrop-blur-md border-b border-white/10 shadow-lg">
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-20">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between py-3 sm:py-4 md:py-5 gap-3 lg:gap-0">
+      <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-black text-white backdrop-blur-md border-b border-white/10 shadow-lg">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-20">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between py-3 sm:py-4 md:py-5 gap-3 lg:gap-0">
             
             {/* Left Section - Car Brands */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 flex-1">
@@ -91,30 +91,29 @@ export default function TopBanner() {
             </div>
 
             {/* Right Section - Quick Booking */}
-<div className="hidden sm:flex flex-col sm:flex-row items-end sm:items-center gap-2 sm:gap-4 flex-1 justify-end order-2 lg:order-3">   
-  <div className="flex items-center gap-2 flex-shrink-0 order-1">
-    <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.3-1.54c-.2-.24-.58-.24-.77 0-.19.23-.19.62 0 .85l1.9 2.23c.2.24.59.24.77 0l3.34-4.27c.19-.23.19-.62 0-.85-.19-.23-.57-.24-.77-.01z"/>
-    </svg>
-    <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold tracking-wide text-right sm:text-left">
-      QUICK BOOKING
-    </span>
-  </div>
-  <button
-    onClick={handleBookingClick}
-    className="px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white text-xs sm:text-sm font-bold rounded-lg hover:shadow-lg active:shadow-md active:scale-95 transition-all duration-300 flex-shrink-0"
-  >
-    BOOK NOW
-  </button>
-</div>
-
+            <div className="flex flex-col sm:flex-row items-end sm:items-center gap-2 sm:gap-4 flex-1 justify-end order-2 lg:order-3">
+              <div className="flex items-center gap-2 flex-shrink-0 order-1">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.3-1.54c-.2-.24-.58-.24-.77 0-.19.23-.19.62 0 .85l1.9 2.23c.2.24.59.24.77 0l3.34-4.27c.19-.23.19-.62 0-.85-.19-.23-.57-.24-.77-.01z"/>
+                </svg>
+                <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold tracking-wide text-right sm:text-left">
+                  QUICK BOOKING
+                </span>
+              </div>
+              <button
+                onClick={handleBookingClick}
+                className="px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white text-xs sm:text-sm font-bold rounded-lg hover:shadow-lg active:shadow-md active:scale-95 transition-all duration-300 flex-shrink-0"
+              >
+                BOOK NOW
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Responsive Quick Booking Modal */}
       {isBookingOpen && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[1000] flex items-center justify-center p-3 sm:p-4 md:p-6">
+        <div className=" inset-0 bg-black/60 backdrop-blur-sm z-[1000] flex items-center justify-center p-3 sm:p-4 md:p-6">
           <div
             className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 max-w-sm w-full mx-2 sm:mx-4 transform scale-95 animate-in slide-in-from-bottom-4 duration-300 max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}

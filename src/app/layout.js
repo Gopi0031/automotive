@@ -1,7 +1,5 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import ViewCarTypeSidebar from '@/components/ViewCarTypeSidebar';
-import QuickBookingPopup from '@/components/QuickBookingPopup';
 import TopBanner from "@/components/TopBanner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -19,22 +17,9 @@ export default function RootLayout({ children }) {
       <body className={inter.className} suppressHydrationWarning>
         <TopBanner />
         <Header />
-        
-        {/* MOBILE ONLY - Hidden on desktop/tablet */}
-        <div className="block sm:hidden">
-          <ViewCarTypeSidebar />
-        </div>
-        
         {children} 
-        
-        {/* MOBILE ONLY - Hidden on desktop/tablet */}
-        <div className="block sm:hidden">
-          <QuickBookingPopup />
-        </div>
-
         <Footer />
       </body>
     </html>
   );
 }
-
