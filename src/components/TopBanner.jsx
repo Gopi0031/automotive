@@ -44,9 +44,9 @@ export default function TopBanner() {
   return (
     <>
       {/* Top Banner - Fully Responsive */}
-      <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-black text-white backdrop-blur-md border-b border-white/10 shadow-lg">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-20">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between py-3 sm:py-4 md:py-5 gap-3 lg:gap-0">
+    <div className="hidden sm:block bg-gradient-to-r from-gray-900 via-gray-800 to-black text-white backdrop-blur-md border-b border-white/10 shadow-lg">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-20">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between py-3 sm:py-4 md:py-5 gap-3 lg:gap-0">
             
             {/* Left Section - Car Brands */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 flex-1">

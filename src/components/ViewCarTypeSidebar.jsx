@@ -5,10 +5,16 @@ import { useRouter } from "next/navigation";
 export default function ViewCarTypeSidebar() {
   const router = useRouter();
 
+  const handleCarBrandsClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    router.push('/car-brands');
+  };
+
   return (
     <button
-      onClick={() => router.push('/car-brands')}
-      className="fixed top-[7.5rem] xs:top-24 left-3 xs:left-4 sm:left-6 z-50 group touch-manipulation [-webkit-tap-highlight-color:transparent]"
+      onClick={handleCarBrandsClick}
+      className="fixed top-[7.5rem] xs:top-24 left-3 xs:left-4 sm:left-6 z-[10000] group touch-manipulation [-webkit-tap-highlight-color:transparent] focus:outline-none"
       aria-label="View Car Brands"
     >
       {/* Pulse Effect */}
