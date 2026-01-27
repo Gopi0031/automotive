@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import QuickBookingPopup from '@/components/QuickBookingPopup';
 import TopBanner from "@/components/TopBanner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -18,6 +19,8 @@ export default function RootLayout({ children }) {
         <TopBanner />
         <Header />
         {children} 
+              <QuickBookingPopup />
+
         <Footer />
       </body>
     </html>

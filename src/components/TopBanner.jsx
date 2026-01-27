@@ -91,22 +91,23 @@ export default function TopBanner() {
             </div>
 
             {/* Right Section - Quick Booking */}
-            <div className="flex flex-col sm:flex-row items-end sm:items-center gap-2 sm:gap-4 flex-1 justify-end order-2 lg:order-3">
-              <div className="flex items-center gap-2 flex-shrink-0 order-1">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.3-1.54c-.2-.24-.58-.24-.77 0-.19.23-.19.62 0 .85l1.9 2.23c.2.24.59.24.77 0l3.34-4.27c.19-.23.19-.62 0-.85-.19-.23-.57-.24-.77-.01z"/>
-                </svg>
-                <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold tracking-wide text-right sm:text-left">
-                  QUICK BOOKING
-                </span>
-              </div>
-              <button
-                onClick={handleBookingClick}
-                className="px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white text-xs sm:text-sm font-bold rounded-lg hover:shadow-lg active:shadow-md active:scale-95 transition-all duration-300 flex-shrink-0"
-              >
-                BOOK NOW
-              </button>
-            </div>
+<div className="hidden sm:flex flex-col sm:flex-row items-end sm:items-center gap-2 sm:gap-4 flex-1 justify-end order-2 lg:order-3">   
+  <div className="flex items-center gap-2 flex-shrink-0 order-1">
+    <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.3-1.54c-.2-.24-.58-.24-.77 0-.19.23-.19.62 0 .85l1.9 2.23c.2.24.59.24.77 0l3.34-4.27c.19-.23.19-.62 0-.85-.19-.23-.57-.24-.77-.01z"/>
+    </svg>
+    <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold tracking-wide text-right sm:text-left">
+      QUICK BOOKING
+    </span>
+  </div>
+  <button
+    onClick={handleBookingClick}
+    className="px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white text-xs sm:text-sm font-bold rounded-lg hover:shadow-lg active:shadow-md active:scale-95 transition-all duration-300 flex-shrink-0"
+  >
+    BOOK NOW
+  </button>
+</div>
+
           </div>
         </div>
       </div>

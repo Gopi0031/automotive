@@ -127,7 +127,7 @@ export default function Footer() {
         </div>
       </div>
                <div className="text-center" >  <a href="https://www.ramakalpasolutions.in/" className="text-red-500 hover:text-white transition-colors uppercase duration-300 text-xs font-light">
-                Developed By Ramakalpa solutions
+                Designed By Ramakalpa solutions
               </a></div> 
     </footer>
     
