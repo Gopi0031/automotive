@@ -23,23 +23,41 @@ export default function TopBanner() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  e.stopPropagation();
 
-    const message = `*New Booking Request*%0A%0AName: ${encodeURIComponent(
-      formData.name
-    )}%0APhone: ${encodeURIComponent(
-      formData.number
-    )}%0ADescription: ${encodeURIComponent(formData.description)}`;
+  // Validate form first
+  if (!formData.name || !formData.number || !formData.description) {
+    alert('Please fill all fields');
+    return;
+  }
 
-    const whatsappNumber = "919392792067";
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+  if (formData.number.length !== 10) {
+    alert('Please enter valid 10-digit phone number');
+    return;
+  }
 
-    window.open(whatsappURL, "_blank");
+  const message = `*New Booking Request*%0A%0AName: ${encodeURIComponent(
+    formData.name
+  )}%0APhone: ${encodeURIComponent(formData.number)}%0ADescription: ${encodeURIComponent(formData.description)}`;
 
+  const whatsappNumber = "919392792067";
+  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+  // Force new tab + track click
+  const whatsappWindow = window.open(whatsappURL, '_blank', 'noopener,noreferrer');
+  
+  if (whatsappWindow) {
+    // Success - reset form
     setFormData({ name: "", number: "", description: "" });
     setIsBookingOpen(false);
-  };
+  } else {
+    // Popup blocked - fallback
+    alert('Please allow popups for WhatsApp');
+  }
+};
+
 
   return (
     <>
@@ -113,7 +131,7 @@ export default function TopBanner() {
 
       {/* Responsive Quick Booking Modal */}
       {isBookingOpen && (
-        <div className=" inset-0 bg-black/60 backdrop-blur-sm z-[1000] flex items-center justify-center p-3 sm:p-4 md:p-6">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[1000] flex items-center justify-center p-3 sm:p-4 md:p-6">
           <div
             className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 max-w-sm w-full mx-2 sm:mx-4 transform scale-95 animate-in slide-in-from-bottom-4 duration-300 max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
