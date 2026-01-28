@@ -21,6 +21,17 @@ export default function Header() {
     setIsServicesDropdownOpen(!isServicesDropdownOpen);
   };
 
+  // Add this useEffect in Header component
+useEffect(() => {
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
+    setIsServicesDropdownOpen(false);
+  };
+
+  window.addEventListener('closeHeaderMenu', handleCloseMenu);
+  return () => window.removeEventListener('closeHeaderMenu', handleCloseMenu);
+}, []);
+
   // Prevent body scroll when menu is open
   useEffect(() => {
     if (isMenuOpen) {
@@ -49,7 +60,7 @@ export default function Header() {
               href="/"
               className="flex items-center gap-3 group flex-shrink-0"
               onClick={closeMenu}
-              style={{ position: 'relative', zIndex: 10001 }}
+              style={{ position: 'relative', zIndex: 50 }}
             >
               <div className="relative w-80 h-80 sm:w-80 sm:h-80 lg:w-70 lg:h-90 xl:w-100 xl:h-100">
                 <Image
@@ -133,7 +144,7 @@ export default function Header() {
               onClick={toggleMenu}
               className="lg:hidden p-2 text-white hover:text-amber-400 transition-colors duration-300 hover:bg-white/10 rounded-lg flex-shrink-0"
               aria-label="Toggle menu"
-              style={{ position: 'relative', zIndex: 10001 }}
+              style={{ position: 'relative', zIndex: 50 }}
             >
               {isMenuOpen ? (
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -158,7 +169,7 @@ export default function Header() {
           />
           
           <nav
-            className="lg:hidden  top-0 right-0 w-[85vw] sm:w-[400px] h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 shadow-2xl overflow-y-auto z-[10000] transform transition-transform duration-700 ease-out translate-x-0"
+            className="lg:hidden  top-0 right-0 w-[85vw] sm:w-[400px] h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 shadow-2xl overflow-y-auto z-[9999] transform transition-transform duration-700 ease-out translate-x-0"
             style={{ zIndex: 10000 }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-amber-400/5 via-transparent to-transparent pointer-events-none"></div>

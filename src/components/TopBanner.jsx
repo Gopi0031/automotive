@@ -130,12 +130,12 @@ export default function TopBanner() {
       </div>
 
       {/* Responsive Quick Booking Modal */}
-      {isBookingOpen && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[1000] flex items-center justify-center p-3 sm:p-4 md:p-6">
-          <div
-            className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 max-w-sm w-full mx-2 sm:mx-4 transform scale-95 animate-in slide-in-from-bottom-4 duration-300 max-h-[90vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
+     {isBookingOpen && (
+  <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[10002] flex items-center justify-center p-3 sm:p-4 md:p-6">
+    <div
+      className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 max-w-sm w-full mx-2 sm:mx-4 transform scale-95 animate-in slide-in-from-bottom-4 duration-300 max-h-[90vh] overflow-y-auto z-[10003]"
+      onClick={(e) => e.stopPropagation()}
+    >
             {/* Modal Header */}
             <div className="flex justify-between items-center p-5 sm:p-6 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-white/50 rounded-t-2xl">
               <div>
