@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import "./styles.css";
 
+
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("bookings");
   const [bookings, setBookings] = useState([]);
@@ -555,7 +556,9 @@ export default function AdminDashboard() {
       <header className="admin-header">
         <div className="admin-header-content">
           <h1 className="admin-title">Admin Dashboard</h1>
-          <button onClick={handleLogout} className="logout-btn">
+          {/* <button onClick={handleLogout} className="logout-btn"> */}
+          <button type="button" onClick={handleLogout} className="logout-btn">
+
             <SVG path="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
             <span>Logout</span>
           </button>
@@ -565,13 +568,15 @@ export default function AdminDashboard() {
       <div className="nav-tabs">
         <div className="nav-tabs-content">
           {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`nav-tab ${activeTab === tab.id ? "active" : ""}`}
-            >
-              {tab.label} ({tab.count})
-            </button>
+           <button
+            type="button"
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`nav-tab ${activeTab === tab.id ? "active" : ""}`}
+          >
+            {tab.label} ({tab.count})
+          </button>
+
           ))}
         </div>
       </div>
@@ -667,12 +672,12 @@ export default function AdminDashboard() {
                                   </span>
                                   <div className="space-y-2 mt-4">
                                     {booking.status === 'pending' && (
-                                      <button onClick={() => handleAcceptBooking(booking)} className="btn-accept">
+                                      <button type="button" onClick={() => handleAcceptBooking(booking)} className="btn-accept">
                                         <SVG path="M5 13l4 4L19 7" className="icon-sm" />
                                         Accept
                                       </button>
                                     )}
-                                    <button onClick={() => handleDeleteBooking(booking)} className="btn-delete" style={{width: '100%'}}>
+                                    <button type="button" onClick={() => handleDeleteBooking(booking)} className="btn-delete" style={{width: '100%'}}>
                                       <SVG path="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" className="icon-sm" />
                                       Delete
                                     </button>
@@ -790,10 +795,10 @@ export default function AdminDashboard() {
                       </div>
                     )}
                     <div className="card-actions">
-                      <button onClick={() => { setEditingService(service); setServiceForm(service); setShowServiceForm(true); }} className="btn-edit">
+                      <button type="button" onClick={() => { setEditingService(service); setServiceForm(service); setShowServiceForm(true); }} className="btn-edit">
                         Edit
                       </button>
-                      <button onClick={() => handleDeleteService(service._id)} className="btn-delete">
+                      <button type="button" onClick={() => handleDeleteService(service._id)} className="btn-delete">
                         Delete
                       </button>
                     </div>

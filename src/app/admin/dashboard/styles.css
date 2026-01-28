@@ -661,69 +661,88 @@
 /* ============================= */
 /* MOBILE: LEFT SIDEBAR LAYOUT */
 /* ============================= */
+/* ============================= */
+/* MOBILE DASHBOARD FIX */
+/* ============================= */
 @media (max-width: 640px) {
 
-  /* Grid layout */
+  /* Reset layout */
   .admin-container {
-    display: grid;
-    grid-template-columns: 9rem 1fr;
-    grid-template-rows: auto 1fr;
+    display: block;
   }
 
   /* Header */
-  .admin-header {
-    grid-column: 1 / -1;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  .admin-header-content {
+    flex-direction: column;
+    gap: 0.75rem;
+    height: auto;
+    padding: 1rem;
   }
 
-  /* Sidebar */
+  .logout-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Tabs → horizontal scroll */
   .nav-tabs {
-    grid-column: 1;
-    grid-row: 2;
     position: sticky;
     top: 0;
-    height: calc(100vh - 5rem);
-    border-right: 2px solid rgb(63, 63, 70);
-    border-bottom: none;
-    overflow-y: auto;
+    z-index: 40;
   }
 
   .nav-tabs-content {
-    flex-direction: column;
-    padding: 0.5rem 0;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 0.5rem 0.75rem;
   }
 
   .nav-tab {
-    width: 100%;
-    text-align: left;
-    padding: 0.75rem 0.75rem;
-    font-size: 0.75rem;
-    white-space: normal;
+    font-size: 0.875rem;
+    padding: 0.75rem 0.5rem;
+    white-space: nowrap;
   }
 
-  /* Active indicator */
-  .nav-tab::before {
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    height: 100%;
-    transform: none;
-  }
-
-  .nav-tab.active::before {
-    width: 3px;
-  }
-
-  /* Content */
+  /* Content full width */
   .main-content {
-    grid-column: 2;
-    grid-row: 2;
+    max-width: 100%;
     margin: 0;
-    padding: 1.25rem 0.75rem;
-    min-width: 0;
+    padding: 1rem 0.75rem;
+  }
+
+  /* Cards */
+  .card,
+  .booking-card,
+  .form-card {
+    padding: 1.25rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Buttons */
+  .btn-primary,
+  .btn-delete,
+  .btn-edit,
+  .btn-accept {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .card-actions {
+    flex-direction: column;
+  }
+
+  /* Images */
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
