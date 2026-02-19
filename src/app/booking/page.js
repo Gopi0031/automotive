@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import "./booking.css";
 
 export default function BookingPage() {
@@ -222,6 +223,14 @@ export default function BookingPage() {
     }
   };
 
+  // ✨ NEW: Get selected service name for single mode
+  const getSelectedServiceName = () => {
+    if (selectionMode === "single" && formData.primaryService) {
+      return services.find(s => s.slug === formData.primaryService)?.name || "";
+    }
+    return "";
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -384,20 +393,74 @@ export default function BookingPage() {
                 {selectionMode === "single" && (
                   <div>
                     <label className="form-label">Choose Your Service *</label>
-                    <select
-                      name="primaryService"
-                      value={formData.primaryService}
-                      onChange={handleChange}
-                      required
-                      className="form-select"
-                    >
-                      <option value="">Select a service</option>
-                      {services.map((service) => (
-                        <option key={service._id} value={service.slug}>
-                          {service.name}
-                        </option>
-                      ))}
-                    </select>
+                    <div style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
+                      <div style={{ flex: 1 }}>
+                        <select
+                          name="primaryService"
+                          value={formData.primaryService}
+                          onChange={handleChange}
+                          required
+                          className="form-select"
+                        >
+                          <option value="">Select a service</option>
+                          {services.map((service) => (
+                            <option key={service._id} value={service.slug}>
+                              {service.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      
+                      {/* ✨ NEW: Arrow button to view service details */}
+                      {formData.primaryService && getSelectedServiceName() && (
+                        <Link
+                          href={`/service?category=${formData.primaryService}`}
+                          title={`View details for ${getSelectedServiceName()}`}
+                          className="service-nav-button"
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            padding: "0.75rem 1rem",
+                            backgroundColor: "rgb(22, 163, 74)",
+                            color: "white",
+                            borderRadius: "0.5rem",
+                            textDecoration: "none",
+                            transition: "all 0.3s ease",
+                            marginTop: "0.25rem",
+                            cursor: "pointer",
+                            border: "none",
+                            fontWeight: "600",
+                            boxShadow: "0 4px 12px rgba(22, 163, 74, 0.4)",
+                            whiteSpace: "nowrap",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.target.style.backgroundColor = "rgb(21, 128, 61)";
+                            e.target.style.boxShadow = "0 6px 18px rgba(22, 163, 74, 0.6)";
+                            e.target.style.transform = "translateY(-2px)";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.target.style.backgroundColor = "rgb(22, 163, 74)";
+                            e.target.style.boxShadow = "0 4px 12px rgba(22, 163, 74, 0.4)";
+                            e.target.style.transform = "translateY(0)";
+                          }}
+                        >
+                          <svg
+                            style={{ width: "1.25rem", height: "1.25rem" }}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M13 7l5 5m0 0l-5 5m5-5H6"
+                            />
+                          </svg>
+                        </Link>
+                      )}
+                    </div>
                   </div>
                 )}
 
@@ -410,15 +473,62 @@ export default function BookingPage() {
                     </p>
                     <div className="checkbox-grid">
                       {services.map((service) => (
-                        <label key={service._id} className="checkbox-label">
-                          <input
-                            type="checkbox"
-                            checked={formData.additionalServices.includes(service.slug)}
-                            onChange={() => handleServiceToggle(service.slug)}
-                            className="checkbox-input"
-                          />
-                          <div className="checkbox-text">{service.name}</div>
-                        </label>
+                        <div key={service._id} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                          <label className="checkbox-label" style={{ flex: 1 }}>
+                            <input
+                              type="checkbox"
+                              checked={formData.additionalServices.includes(service.slug)}
+                              onChange={() => handleServiceToggle(service.slug)}
+                              className="checkbox-input"
+                            />
+                            <div className="checkbox-text">{service.name}</div>
+                          </label>
+                          
+                          {/* ✨ NEW: Arrow button for each service in multiple mode */}
+                          <Link
+                            href={`/service?category=${service.slug}`}
+                            title={`View details for ${service.name}`}
+                            className="service-nav-button-small"
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              padding: "0.5rem",
+                              backgroundColor: "rgb(59, 130, 246)",
+                              color: "white",
+                              borderRadius: "0.375rem",
+                              textDecoration: "none",
+                              transition: "all 0.3s ease",
+                              cursor: "pointer",
+                              border: "none",
+                              boxShadow: "0 2px 8px rgba(59, 130, 246, 0.3)",
+                            }}
+                            onMouseEnter={(e) => {
+                              e.target.style.backgroundColor = "rgb(37, 99, 235)";
+                              e.target.style.boxShadow = "0 4px 12px rgba(59, 130, 246, 0.5)";
+                              e.target.style.transform = "scale(1.1)";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.target.style.backgroundColor = "rgb(59, 130, 246)";
+                              e.target.style.boxShadow = "0 2px 8px rgba(59, 130, 246, 0.3)";
+                              e.target.style.transform = "scale(1)";
+                            }}
+                          >
+                            <svg
+                              style={{ width: "1rem", height: "1rem" }}
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M13 7l5 5m0 0l-5 5m5-5H6"
+                              />
+                            </svg>
+                          </Link>
+                        </div>
                       ))}
                     </div>
                     {formData.additionalServices.length > 0 && (
@@ -534,7 +644,7 @@ export default function BookingPage() {
 
               {/* Additional Notes */}
               <div>
-                <label className="form-label">Additional Notes (Optional)</label>
+                <label className="form-label">About Your Issue</label>
                 <textarea
                   name="notes"
                   value={formData.notes}
