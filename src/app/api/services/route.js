@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
+import { ObjectId } from "mongodb";
 
 // GET all services
 export async function GET() {
@@ -20,7 +21,6 @@ export async function GET() {
 }
 
 // POST new service
-// POST new service
 export async function POST(request) {
   try {
     const serviceData = await request.json();
@@ -38,6 +38,8 @@ export async function POST(request) {
     
     const result = await db.collection("services").insertOne({
       ...serviceData,
+      image: serviceData.image || null,
+      cloudinaryPublicId: serviceData.cloudinaryPublicId || null,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -63,11 +65,15 @@ export async function PUT(request) {
     
     const client = await clientPromise;
     const db = client.db("automotivecarcare");
-    const { ObjectId } = require("mongodb");
     
     const result = await db.collection("services").updateOne(
       { _id: new ObjectId(_id) },
-      { $set: { ...serviceData, updatedAt: new Date() } }
+      { $set: { 
+        ...serviceData, 
+        image: serviceData.image || null,
+        cloudinaryPublicId: serviceData.cloudinaryPublicId || null,
+        updatedAt: new Date() 
+      } }
     );
 
     return NextResponse.json({ 
@@ -91,7 +97,6 @@ export async function DELETE(request) {
     
     const client = await clientPromise;
     const db = client.db("automotivecarcare");
-    const { ObjectId } = require("mongodb");
     
     await db.collection("services").deleteOne({ _id: new ObjectId(id) });
 
